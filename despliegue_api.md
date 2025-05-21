@@ -147,14 +147,14 @@ exit
 from flask import Flask
 from flask_restx import Api, Resource, fields
 import joblib
-from model_simon.prueba_despliegue import predict_proba
+from model_simon.prueba_despliegue import predict_phishing_proba
 ```
 
 * `#!/usr/bin/python`: permite ejecutar el script como programa.
 * `Flask`: framework para apps web.
 * `flask_restx`: estructura y documentación Swagger para APIs.
 * `joblib`: no se usa directamente aquí, puede eliminarse.
-* `predict_proba`: función de predicción importada.
+* `predict_phishing_proba`: función de predicción importada.
 
 ### ⚖️ Inicialización
 
@@ -194,7 +194,7 @@ class PhishingApi(Resource):
     @api.marshal_with(resource_fields)
     def get(self):
         args = parser.parse_args()
-        return {"result": predict_proba(args['URL'])}, 200
+        return {"result": predict_phishing_proba(args['URL'])}, 200
 ```
 
 ### 🚀 Ejecución del Servidor
