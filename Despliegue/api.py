@@ -34,10 +34,9 @@ class GenreApi(Resource):
     @api.marshal_with(resource_fields)
     def get(self):
         args = parser.parse_args()
-        
-        return {
-         "result": predict_genre_proba(args['Description'])
-        }, 200
+        result = predict_genre_proba(args['Description'])
+        p1 = {k: float(v) for k, v in result.items()}    
+        return {"result": p1}, 200
     
     
 if __name__ == '__main__':
