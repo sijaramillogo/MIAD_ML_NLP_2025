@@ -24,7 +24,7 @@ try:
 except Exception as e:
     sys.exit(f"Error cargando modelos: {e}")
 
-def predict_genre_proba(text):
+def predict_genre_proba(text:str)-> dict:
     """
     Recibe un texto (string) y devuelve un dict {género: probabilidad}.
     """
